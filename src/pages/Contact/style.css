@@ -1,0 +1,40 @@
+.links input{
+    height: 50px;
+    width: auto;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#contact-information img {
+    height: 50px;
+    width: auto;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+#contact-information h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#contact {
+    margin-top: 15%;
+}
+
+@media screen and (max-width: 992px) {
+    #contact {
+        margin-top: 25%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #contact {
+        margin-top: 30%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #contact {
+        margin-top: 50%;
+    }
+}

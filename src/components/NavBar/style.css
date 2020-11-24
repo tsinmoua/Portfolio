@@ -1,0 +1,14 @@
+.navbar {
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.navbar-light, .navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-toggler, .navbar-light {
+    border-color: white !important;
+    border-width: medium !important;
+}
