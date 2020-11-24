@@ -11,7 +11,12 @@ function Home() {
       <h2>My name is Tsin Moua.</h2>
       <br />
       <Link to="/about">
-        <button type="button" className="btn btn-dark">Learn more about me</button>
+          <button class="btn">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Learn More</span>
+          </button>
       </Link>
       <Footer />
     </div>

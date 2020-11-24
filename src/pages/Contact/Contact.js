@@ -27,11 +27,11 @@ function Contact() {
 
                 <div className="links">
                     <a href="https://www.linkedin.com/in/tsinmoua/" target="_blank" rel="noreferrer"><input type="image"
-                        src={linkedin} alt="LinkedIn Account" /></a>
+                        src={linkedin} alt="LinkedIn Account" className="zoom" /></a>
                     <a href="https://github.com/tsinmoua" target="_blank" rel="noreferrer"><input type="image"
-                        src={GitHub} alt="GitHub Account" /></a>
+                        src={GitHub} alt="GitHub Account" className="zoom" /></a>
                     <a href={resume} target="_blank" rel="noreferrer"><input type="image"
-                        src={resumeLogo} alt="Resume" /></a>
+                        src={resumeLogo} alt="Resume" className="zoom" /></a>
                 </div>
 
             </section>

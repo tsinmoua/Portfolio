@@ -1,4 +1,4 @@
-.links input{
+.links input {
     height: 50px;
     width: auto;
     border-radius: 5px;
@@ -19,6 +19,16 @@
 
 #contact {
     margin-top: 15%;
+}
+
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
 }
 
 @media screen and (max-width: 992px) {
