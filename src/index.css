@@ -1,49 +1,13 @@
-* {
-  font-family: 'Staatliches', cursive;
-  text-align: center;
-  color: black;
-}
-
 body {
-  /* display: block; */
-  /* position: relative; */
-  background-image: url("https://images.pexels.com/photos/3184450/pexels-photo-3184450.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-repeat: no-repeat;
-  background-position: center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-@media screen and (max-width: 992px) {
-  body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
