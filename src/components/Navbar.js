@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { TabList, TabContext, TabPanel } from '@material-ui/lab';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
@@ -8,11 +7,11 @@ import {
   useScrollTrigger,
   Button,
   Tab,
-  Tabs
+  Tabs,
+  useMediaQuery
 } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
-import Home from '../pages/Home'
 
 import Logo from '../assets/TsinMoua.png'
 
@@ -36,12 +35,9 @@ const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: "2rem",
-    // [theme.breakpoints.down("md")]: {
-    //   marginBottom: "2em"
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   marginBottom: "1.25em"
-    // }
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2.5rem"
+    }
   },
   logoContainer: {
     padding: 0,
@@ -51,11 +47,12 @@ const useStyles = makeStyles((theme) => ({
     height: '6rem'
   },
   menuButton: {
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    height: '2rem'
   },
   tabContainer: {
     marginLeft: 'auto',
-    marginRight: '0'
+    marginRight: '0',
   },
   root: {
     flexGrow: 1,
@@ -66,8 +63,10 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar(props) {
   const classes = useStyles();
-
   const [value, setValue] = useState('1');
+  const theme = useTheme();
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     if (window.location.pathname === '/' && value !== 0) {
@@ -87,33 +86,38 @@ function Navbar(props) {
     setValue(newValue);
   };
 
+  const drawer = (
+    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      <MenuIcon style={{ width: '50px', height: '50px' }} />
+    </IconButton>
+  )
+
+
+  const tabs = (
+    <Tabs value={value} onChange={handleChange} className={classes.tabContainer}>
+      <Tab label="Home" value='1' component={Link} to='/' disableRipple />
+      <Tab label="About" value='2' component={Link} to='/about' disableRipple />
+      <Tab label="Skills" value='3' component={Link} to='/skills' disableRipple />
+      <Tab label="Projects" value='4' component={Link} to='/projects' disableRipple />
+      <Tab label="Contact" value='5' component={Link} to='/contact' disableRipple />
+    </Tabs>
+  )
+
   return (
     <>
       <ElevationScroll {...props}>
-        <TabContext value={value}>
 
-          <AppBar position="fixed" >
-            <Toolbar disableGutters>
+        <AppBar position="fixed" >
+          <Toolbar disableGutters>
 
-              <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('1')}>
-                <img src={Logo} alt={'Logo'} />
-              </Button>
+            <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('1')}>
+              <img src={Logo} alt={'Logo'} />
+            </Button>
 
-              <Tabs value={value} onChange={handleChange} className={classes.tabContainer}>
-                <Tab label="Home" value='1' component={Link} to='/' disableRipple />
-                <Tab label="About" value='2' component={Link} to='/about' disableRipple />
-                <Tab label="Skills" value='3' component={Link} to='/skills' disableRipple />
-                <Tab label="Projects" value='4' component={Link} to='/projects' disableRipple />
-                <Tab label="Contact" value='5' component={Link} to='/contact' disableRipple />
-              </Tabs>
+            {matches ? drawer : tabs}
 
-              {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton> */}
-
-            </Toolbar>
-          </AppBar>
-        </TabContext>
+          </Toolbar>
+        </AppBar>
       </ElevationScroll>
 
       <div className={classes.toolbarMargin} />
