@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const navy = "#004080"
-const orange = "#FFA500"
+const orange = "#FFC04A"
 
 export default createMuiTheme({
     palette: {
