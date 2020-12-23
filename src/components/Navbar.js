@@ -145,7 +145,7 @@ function Navbar(props) {
               }}
             >
               <ListItemText>
-                <Typography variant='subtitle1' style={{ color: 'white' }}>
+                <Typography variant='subtitle1' style={value === route.activeIndex ? { color: theme.palette.common.orange } : { color: 'white' }} >
                   {route.name}
                 </Typography>
               </ListItemText>
@@ -160,7 +160,7 @@ function Navbar(props) {
       >
         <MenuIcon style={{ width: '50px', height: '50px' }} />
       </IconButton>
-    </React.Fragment>
+    </React.Fragment >
 
   )
 

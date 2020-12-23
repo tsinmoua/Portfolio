@@ -1,9 +1,9 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { unstable_createMuiStrictModeTheme as Theme } from '@material-ui/core';
 
 const navy = "#004080"
 const orange = "#FFC04A"
 
-export default createMuiTheme({
+export default Theme({
     palette: {
         common: {
             navy: navy,
