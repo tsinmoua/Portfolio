@@ -8,7 +8,12 @@ import {
   Button,
   Tab,
   Tabs,
-  useMediaQuery
+  useMediaQuery,
+  SwipeableDrawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
@@ -46,24 +51,42 @@ const useStyles = makeStyles((theme) => ({
     },
     height: '6rem'
   },
-  menuButton: {
+  drawerIconContainer: {
     marginLeft: 'auto',
-    height: '2rem'
+    height: '2rem',
+    "&:hover": {
+      backgroundColor: "transparent"
+    }
   },
   tabContainer: {
     marginLeft: 'auto',
     marginRight: '0',
   },
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+  drawer: {
+    backgroundColor: theme.palette.common.navy,
+    width: '25%',
+    [theme.breakpoints.down("xs")]: {
+      width: '50%',
+    }
   },
+  drawerItemSelected: {
+    "& .MuiListItemText-root": {
+      opacity: 1
+    },
+    color: theme.palette.common.orange,
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1
+  }
+
 }));
 
 
 function Navbar(props) {
   const classes = useStyles();
   const [value, setValue] = useState('1');
+  const [openDrawer, setOpenDrawer] = useState(false);
+
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
@@ -86,10 +109,59 @@ function Navbar(props) {
     setValue(newValue);
   };
 
+  const routes = [
+    { name: "HOME", link: "/", activeIndex: '1' },
+    { name: "ABOUT", link: "/about", activeIndex: '2' },
+    { name: "SKILLS", link: "/skills", activeIndex: '3' },
+    { name: "PROJECTS", link: "/projects", activeIndex: '4' },
+    { name: "CONTACT", link: "/contact", activeIndex: '5' },
+  ]
+
   const drawer = (
-    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-      <MenuIcon style={{ width: '50px', height: '50px' }} />
-    </IconButton>
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
+        anchor="right"
+      >
+        <div className={classes.toolbarMargin} />
+        <List disablePadding>
+          {routes.map(route => (
+            <ListItem
+              divider
+              key={`${route}${route.activeIndex}`}
+              button
+              component={Link}
+              to={route.link}
+              selected={props.value === route.activeIndex}
+              classes={{ selected: classes.drawerItemSelected }}
+              onClick={() => {
+                setOpenDrawer(false);
+                setValue(route.activeIndex);
+              }}
+            >
+              <ListItemText>
+                <Typography variant='subtitle1' style={{ color: 'white' }}>
+                  {route.name}
+                </Typography>
+              </ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </SwipeableDrawer>
+      <IconButton
+        className={classes.drawerIconContainer}
+        onClick={() => setOpenDrawer(!openDrawer)}
+        disableRipple
+      >
+        <MenuIcon style={{ width: '50px', height: '50px' }} />
+      </IconButton>
+    </React.Fragment>
+
   )
 
 
@@ -107,10 +179,10 @@ function Navbar(props) {
     <>
       <ElevationScroll {...props}>
 
-        <AppBar position="fixed" >
+        <AppBar position="fixed" className={classes.appbar}>
           <Toolbar disableGutters>
 
-            <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('1')}>
+            <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('0')}>
               <img src={Logo} alt={'Logo'} />
             </Button>
 
