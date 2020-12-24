@@ -19,7 +19,7 @@ const Home = (props) => {
   const classes = useStyles();
 
   return (
-    <div style={{ overflowX: 'hidden' }}>
+    <div>
       <img src={hero} alt='Hero img' className={classes.divImage} />
 
       <Grid container className={classes.hello} direction='column'>

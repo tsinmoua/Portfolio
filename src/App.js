@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from "./components/Theme";
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/skills' component={Skills} />
             <Route exact path='/projects' component={Projects} />
             <Route exact path='/contact' component={Contact} />
+            <Footer />
           </Navbar>
         </Switch>
       </BrowserRouter >
