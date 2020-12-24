@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
   },
   tabContainer: {
     marginLeft: 'auto',
-    marginRight: '0',
   },
   drawer: {
     backgroundColor: theme.palette.common.navy,
@@ -106,7 +105,7 @@ function Navbar(props) {
     } else if (window.location.pathname === '/contact' && value !== '5') {
       setValue('5')
     }
-  }, [value])
+  }, [value, window.location.pathname] )
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   hello: {
-    // zIndex: 100,
     position: "relative",
     top: '-20rem',
     left: '5rem'
@@ -19,7 +18,9 @@ const Home = (props) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div style={{ overflowX: 'hidden' }}>
+      <img src={hero} alt='Hero img' className={classes.divImage} />
+      <img src={hero} alt='Hero img' className={classes.divImage} />
       <img src={hero} alt='Hero img' className={classes.divImage} />
 
       <Grid container className={classes.hello} direction='column'>

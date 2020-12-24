@@ -7,36 +7,58 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: 'linear-gradient(#004080, black)',
     height: '10rem',
     width: '100%',
-    position: 'absolute',
+    position: 'static',
     bottom: 0
   },
   footerLinks: {
     textDecoration: 'none',
     color: 'white'
+  },
+  footerContainer: {
+    height: '100%',
+    width: '100%'
   }
 }))
 
 const Footer = (props) => {
   const classes = useStyles();
 
+  const routes = [
+    { name: "HOME", link: "/" },
+    { name: "ABOUT", link: "/about" },
+    { name: "SKILLS", link: "/skills" },
+    { name: "PROJECTS", link: "/projects" },
+    { name: "CONTACT", link: "/contact" },
+  ]
+
   return (
     <footer className={classes.footer}>
-      <Grid container justify='center' alignItems='center' spacing={2}>
-        <Grid item>
-          <Typography variant='subtitle2' component={Link} to='/' className={classes.footerLinks}>Home</Typography>
+
+      <Grid container justify='center' alignItems='center' spacing={3}
+        className={classes.footerContainer}
+      >
+        {routes.map((route, index) => {
+          return (
+            <Grid item key={index}>
+              <Typography
+                variant='subtitle2'
+                component={Link} to={route.link}
+                className={classes.footerLinks}
+              >
+                {route.name}
+              </Typography>
+            </Grid>
+          )
+        })}
+
+        <Grid container justify='center' alignItems='flex-end' >
+          <Grid item>
+            <Typography variant='subtitle2' className={classes.footerLinks} style={{ fontSize: '.75rem' }}>
+              Copyright © 2020 Tsin Moua &bull; Minneapolis/Saint Paul, MN
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Typography variant='subtitle2' component={Link} to='/about' className={classes.footerLinks}>About</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant='subtitle2' component={Link} to='/skills' className={classes.footerLinks}>Skills</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant='subtitle2' component={Link} to='/projects' className={classes.footerLinks}>Projects</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant='subtitle2' component={Link} to='/contact' className={classes.footerLinks}>Contact</Typography>
-        </Grid>
+
       </Grid>
     </footer>
   )
