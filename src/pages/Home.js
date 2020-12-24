@@ -1,16 +1,17 @@
 import React from "react"
-import { Grid, makeStyles, Typography } from "@material-ui/core";
+import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
 
-// import Hero from '../assets/Hero.png'
+import hero from '../assets/Hero.png'
 
 const useStyles = makeStyles((theme) => ({
   divImage: {
-    // backgroundImage: `url(${Hero})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    height: "100%",
-    width: "100%"
+    width: "100%",
+  },
+  hello: {
+    // zIndex: 100,
+    position: "relative",
+    top: '-20rem',
+    left: '5rem'
   }
 }))
 
@@ -18,21 +19,23 @@ const Home = (props) => {
   const classes = useStyles();
 
   return (
-    <div>
-      {/* <Grid container style={{ backgroundColor: "navy" }}> */}
-      <Grid container>
+    <div style={{ overflowX: 'hidden' }}>
+      <img src={hero} alt='Hero img' className={classes.divImage} />
+
+      <Grid container className={classes.hello} direction='column'>
         <Grid item>
-          <div className={classes.divImage} />
+          <Typography variant='h2' color='secondary'>
+            Hello,
+           <br />
+           My name is Tsin Moua
+         </Typography>
         </Grid>
         <Grid item>
-          <Typography variant='h1'>
-            Hello,
-            <br />
-            My name is Tsin Moua
-        </Typography>
+          <Button>
+            Learn more
+         </Button>
         </Grid>
       </Grid>
-
 
     </div>
   )
