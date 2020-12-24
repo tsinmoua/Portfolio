@@ -77,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     zIndex: theme.zIndex.modal + 1
+  },
+  tab: {
+    minWidth: '8rem'
   }
 
 }));
@@ -167,11 +170,11 @@ function Navbar(props) {
 
   const tabs = (
     <Tabs value={value} onChange={handleChange} className={classes.tabContainer}>
-      <Tab label="Home" value='1' component={Link} to='/' disableRipple />
-      <Tab label="About" value='2' component={Link} to='/about' disableRipple />
-      <Tab label="Skills" value='3' component={Link} to='/skills' disableRipple />
-      <Tab label="Projects" value='4' component={Link} to='/projects' disableRipple />
-      <Tab label="Contact" value='5' component={Link} to='/contact' disableRipple />
+      <Tab label="Home" value='1' component={Link} to='/' disableRipple classes={{ root: classes.tab }} />
+      <Tab label="About" value='2' component={Link} to='/about' disableRipple classes={{ root: classes.tab }} />
+      <Tab label="Skills" value='3' component={Link} to='/skills' disableRipple classes={{ root: classes.tab }} />
+      <Tab label="Projects" value='4' component={Link} to='/projects' disableRipple classes={{ root: classes.tab }} />
+      <Tab label="Contact" value='5' component={Link} to='/contact' disableRipple classes={{ root: classes.tab }} />
     </Tabs>
   )
 
