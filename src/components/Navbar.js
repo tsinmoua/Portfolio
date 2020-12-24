@@ -182,7 +182,7 @@ function Navbar(props) {
         <AppBar position="fixed" className={classes.appbar}>
           <Toolbar disableGutters>
 
-            <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('0')}>
+            <Button disableRipple className={classes.logoContainer} component={Link} to='/' onClick={(e) => setValue('1')}>
               <img src={Logo} alt={'Logo'} />
             </Button>
 

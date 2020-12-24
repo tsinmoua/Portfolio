@@ -1,11 +1,11 @@
 import React from "react"
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 
-import Hero from '../assets/Hero.png'
+// import Hero from '../assets/Hero.png'
 
 const useStyles = makeStyles((theme) => ({
   divImage: {
-    backgroundImage: `url(${Hero})`,
+    // backgroundImage: `url(${Hero})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
