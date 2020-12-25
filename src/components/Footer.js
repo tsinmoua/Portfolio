@@ -54,7 +54,7 @@ const Footer = (props) => {
         <Grid container justify='center' alignItems='flex-end' >
           <Grid item>
             <Typography variant='subtitle2' className={classes.footerLinks} style={{ fontSize: '.75rem' }}>
-              Copyright © 2020 Tsin Moua &bull; Minneapolis/Saint Paul, MN
+              Copyright © 2020 Tsin Moua &bull; Greater Minneapolis/Saint Paul, MN
             </Typography>
           </Grid>
         </Grid>
