@@ -1,7 +1,10 @@
 import React from "react"
 import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
 
-import hero from '../assets/Hero.png'
+import about from '../assets/About.png'
+import tools from '../assets/Tools.png'
+import projects from '../assets/Projects.png'
+import contact from '../assets/contact.png'
 
 const useStyles = makeStyles((theme) => ({
   // divImage: {
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   info: {
-    backgroundImage: 'linear-gradient(black, white)',
+    // backgroundImage: 'linear-gradient(black, white)',
     color: theme.palette.primary.main,
 
   }
@@ -62,24 +65,70 @@ const Home = (props) => {
       </Grid>
 
       <Grid container className={classes.info}>
-        <Grid item>
-          <Typography variant='h3'>
-            About:
-          <br />
-          Full Stack Engineer
+
+        <Grid container>
+          <Grid item>
+            <Typography variant='h3'>
+              Full Stack Engineer
           <br />
           Father/Husband
           <br />
-            <Button>
-              Learn more...
-          </Button>
-          </Typography>
-        </Grid>
-        <Grid item>
-          Test
+              <Button>
+                Learn more...
+            </Button>
+            </Typography>
           </Grid>
-      </Grid>
+          <Grid item>
+            <img src={about} alt='profile' />
+          </Grid>
+        </Grid>
 
+        <Grid container justify='flex-end'>
+          <Grid item>
+            <img src={tools} alt='tools' />
+          </Grid>
+          <Grid item>
+            <Typography variant='h3'>
+              Languages. Servers. Tools.
+              <br />
+              <Button>
+                Learn more...
+              </Button>
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container>
+          <Grid item>
+            <Typography variant='h3'>
+              Projects. My work
+            <br />
+              <Button>
+                Check out my work
+            </Button>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={projects} alt='Projects' />
+          </Grid>
+        </Grid>
+
+        <Grid container justify='flex-end'>
+          <Grid item>
+            <img src={contact} alt='Contact' />
+          </Grid>
+          <Grid item>
+            <Typography variant='h3'>
+              Contact Information
+              <br />
+              <Button>
+                Contact
+              </Button>
+            </Typography>
+          </Grid>
+        </Grid>
+
+      </Grid>
     </Grid>
     // <Grid container direction='column'>
     //   <Grid item>
