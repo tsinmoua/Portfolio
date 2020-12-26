@@ -66,7 +66,10 @@ const Home = (props) => {
 
       <Grid container className={classes.info}>
 
-        <Grid container>
+        <Grid container
+          justify='center'
+          alignItems='center'
+          style={{ height: '50vh', backgroundImage: 'linear-gradient(white, white)' }}>
           <Grid item>
             <Typography variant='h3'>
               Full Stack Engineer
@@ -83,7 +86,10 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid container justify='flex-end'>
+        <Grid container
+          justify='center'
+          alignItems='center'
+          style={{ height: '50vh' }}>
           <Grid item>
             <img src={tools} alt='tools' />
           </Grid>
@@ -98,7 +104,10 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid container>
+        <Grid container
+          justify='center'
+          alignItems='center'
+          style={{ height: '50vh' }}>
           <Grid item>
             <Typography variant='h3'>
               Projects. My work
@@ -113,7 +122,10 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid container justify='flex-end'>
+        <Grid container
+          justify='center'
+          alignItems='center'
+          style={{ height: '50vh' }}>
           <Grid item>
             <img src={contact} alt='Contact' />
           </Grid>
