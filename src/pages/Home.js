@@ -78,13 +78,15 @@ const Home = (props) => {
               <br />
               Fitness Enthusiast.
               <br />
-              <Button>
+              <Button variant="contained" color="secondary">
                 Learn more about me
               </Button>
             </Typography>
           </Grid>
           <Grid item>
-            <img src={about} alt='profile' />
+            <img src={about} alt='profile'
+              style={{ borderRadius: '50%', height: '20rem', marginLeft: '5rem' }}
+            />
           </Grid>
         </Grid>
 
@@ -93,14 +95,15 @@ const Home = (props) => {
           alignItems='center'
           style={{ height: '50vh' }}>
           <Grid item>
-            <img src={tools} alt='tools' />
+            <img src={tools} alt='tools'
+              style={{ height: '20rem', marginRight: '5rem' }}
+            />
           </Grid>
           <Grid item>
-            <Typography variant='h3'>
-              Languages. Servers. Tools.
-              <br />
-              <Button>
-                Learn more...
+            <Typography variant='h2'>
+              My toolpack includes: <br /> HTML, CSS, JavaScript... <br />
+              <Button variant="contained" color="secondary">
+                Skills
               </Button>
             </Typography>
           </Grid>
@@ -111,49 +114,41 @@ const Home = (props) => {
           alignItems='center'
           style={{ height: '50vh' }}>
           <Grid item>
-            <Typography variant='h3'>
-              Projects. My work
-            <br />
-              <Button>
-                Check out my work
+            <Typography variant='h2'>
+              Check out my work<br />
+              <Button variant="contained" color="secondary">
+                Projects
+              </Button>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={projects} alt='Projects'
+              style={{ height: '20rem', marginLeft: '5rem' }}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container
+          justify='center'
+          alignItems='center'
+          style={{ height: '50vh' }}>
+          <Grid item>
+            <img src={contact} alt='Contact'
+              style={{ height: '20rem', marginRight: '5rem' }}
+            />
+          </Grid>
+          <Grid item>
+            <Typography variant='h2'>
+              My information. <br />
+              <Button variant="contained" color="secondary">
+                Contact me
             </Button>
             </Typography>
-          </Grid>
-          <Grid item>
-            <img src={projects} alt='Projects' />
-          </Grid>
-        </Grid>
-
-        <Grid container
-          justify='center'
-          alignItems='center'
-          style={{ height: '50vh' }}>
-          <Grid item>
-            <img src={contact} alt='Contact' />
-          </Grid>
-          <Grid item>
-            <Button>
-              Contact Me
-              </Button>
           </Grid>
         </Grid>
 
       </Grid>
     </Grid>
-    // <Grid container direction='column'>
-    //   <Grid item>
-    //     <Typography variant='h2' color='secondary' className={classes.helloText}>
-    //       Hello,
-    //        <br />
-    //        My name is Tsin Moua
-    //      </Typography>
-    //   </Grid>
-    //   <Grid item>
-    //     <Button>
-    //       Learn more
-    //      </Button>
-    //   </Grid>
-    // </Grid>
   )
 };
 
