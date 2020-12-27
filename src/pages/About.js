@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '3rem'
     },
   },
+  about: {
+    color: theme.palette.primary.main,
+  }
 }))
 
 const About = (props) => {
@@ -36,9 +39,17 @@ const About = (props) => {
       </Typography>
       </Grid>
 
-      <Grid container>
+      <Grid container className={classes.about}>
         <Grid item>
-          test
+          <Typography variant='h2'>
+            I am a Full Stack Engineer with a background in Accounting, based in St. Paul, Minnesota.
+            <br />
+            I enjoy building applications that can fulfill your needs.
+            <br />
+            Always looking to learn more whenever possible.
+            <br />
+            Feel free to take a look at my latest projects in the projects tab.
+          </Typography>
         </Grid>
       </Grid>
     </React.Fragment>

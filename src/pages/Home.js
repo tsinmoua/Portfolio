@@ -8,24 +8,10 @@ import projects from '../assets/Projects.png'
 import contact from '../assets/contact.png'
 
 const useStyles = makeStyles((theme) => ({
-  // divImage: {
-  //   width: "100%",
-  //   height: '100%'
-  // },
-  // hello: {
-  //   position: "relative",
-  //   top: '-20rem',
-  //   left: '5rem',
-  //   [theme.breakpoints.down("md")]: {
-  //     fontSize: '3rem'
-  //   },
-  // },
+
   hello: {
     backgroundImage: 'linear-gradient(#004080, black)',
     height: '90vh',
-    // [theme.breakpoints.down("md")]: {
-    //   height: '90vh'
-    // },
     [theme.breakpoints.down("xs")]: {
       height: '50vh'
     },
@@ -46,8 +32,46 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   info: {
-    // backgroundImage: 'linear-gradient(black, white)',
     color: theme.palette.primary.main,
+  },
+  images: {
+    height: '20rem',
+    margin: '5rem',
+    [theme.breakpoints.down("md")]: {
+      height: '15rem',
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: '12rem',
+      margin: '1rem',
+    },
+    [theme.breakpoints.down("500")]: {
+      height: '10rem',
+      margin: '.5rem'
+    },
+    [theme.breakpoints.down("400")]: {
+      height: '9rem',
+      margin: '.5rem'
+    },
+  },
+  infoText: {
+    [theme.breakpoints.down("lg")]: {
+      fontSize: '3.75rem'
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: '3rem'
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: '2rem'
+    },
+  },
+  sections: {
+    height: '60vh',
+    [theme.breakpoints.down("lg")]: {
+      height: '70vh',
+    },
+    [theme.breakpoints.down("md")]: {
+      height: '50vh',
+    },
 
   }
 }))
@@ -70,9 +94,10 @@ const Home = (props) => {
         <Grid container
           justify='center'
           alignItems='center'
-          style={{ height: '50vh' }}>
+          className={classes.sections}
+        >
           <Grid item>
-            <Typography variant='h2'>
+            <Typography variant='h2' className={classes.infoText} style={{paddingTop: '5rem'}}>
               Full Stack Engineer.
               <br />
               Husband/Father.
@@ -87,7 +112,8 @@ const Home = (props) => {
           </Grid>
           <Grid item>
             <img src={about} alt='profile'
-              style={{ borderRadius: '50%', height: '20rem', marginLeft: '5rem' }}
+              className={classes.images}
+              style={{ borderRadius: '50%' }}
             />
           </Grid>
         </Grid>
@@ -95,15 +121,16 @@ const Home = (props) => {
         <Grid container
           justify='center'
           alignItems='center'
-          style={{ height: '50vh' }}>
+          className={classes.sections}
+        >
           <Grid item>
             <img src={tools} alt='tools'
-              style={{ height: '20rem', marginRight: '5rem' }}
+              className={classes.images}
             />
           </Grid>
           <Grid item>
-            <Typography variant='h2'>
-              My toolpack includes: <br /> HTML, CSS, JavaScript... <br />
+            <Typography variant='h2' className={classes.infoText}>
+              My toolpack: <br /> HTML, CSS, <br />JavaScript... <br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/skills">
                 Skills
@@ -115,10 +142,11 @@ const Home = (props) => {
         <Grid container
           justify='center'
           alignItems='center'
-          style={{ height: '50vh' }}>
+          className={classes.sections}
+        >
           <Grid item>
-            <Typography variant='h2'>
-              Check out my work<br />
+            <Typography variant='h2' className={classes.infoText}>
+              Check out my<br /> work<br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/projects">
                 Projects
@@ -127,7 +155,7 @@ const Home = (props) => {
           </Grid>
           <Grid item>
             <img src={projects} alt='Projects'
-              style={{ height: '20rem', marginLeft: '5rem' }}
+              className={classes.images}
             />
           </Grid>
         </Grid>
@@ -135,14 +163,15 @@ const Home = (props) => {
         <Grid container
           justify='center'
           alignItems='center'
-          style={{ height: '50vh' }}>
+          className={classes.sections}
+        >
           <Grid item>
             <img src={contact} alt='Contact'
-              style={{ height: '20rem', marginRight: '5rem' }}
+              className={classes.images}
             />
           </Grid>
           <Grid item>
-            <Typography variant='h2'>
+            <Typography variant='h2' className={classes.infoText}>
               My information. <br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/contact">
