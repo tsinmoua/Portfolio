@@ -69,16 +69,18 @@ const Home = (props) => {
         <Grid container
           justify='center'
           alignItems='center'
-          style={{ height: '50vh', backgroundImage: 'linear-gradient(white, white)' }}>
+          style={{ height: '50vh' }}>
           <Grid item>
-            <Typography variant='h3'>
-              Full Stack Engineer
-          <br />
-          Father/Husband
-          <br />
+            <Typography variant='h2'>
+              Full Stack Engineer.
+              <br />
+              Husband/Father.
+              <br />
+              Fitness Enthusiast.
+              <br />
               <Button>
-                Learn more...
-            </Button>
+                Learn more about me
+              </Button>
             </Typography>
           </Grid>
           <Grid item>
@@ -130,13 +132,9 @@ const Home = (props) => {
             <img src={contact} alt='Contact' />
           </Grid>
           <Grid item>
-            <Typography variant='h3'>
-              Contact Information
-              <br />
-              <Button>
-                Contact
+            <Button>
+              Contact Me
               </Button>
-            </Typography>
           </Grid>
         </Grid>
 
