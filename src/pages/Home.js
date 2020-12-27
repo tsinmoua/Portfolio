@@ -1,5 +1,6 @@
 import React from "react"
 import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Link } from 'react-router-dom'
 
 import about from '../assets/About.png'
 import tools from '../assets/Tools.png'
@@ -78,7 +79,9 @@ const Home = (props) => {
               <br />
               Fitness Enthusiast.
               <br />
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary"
+                component={Link} to="/about"
+                component={Link} to="/about">
                 Learn more about me
               </Button>
             </Typography>
@@ -102,7 +105,8 @@ const Home = (props) => {
           <Grid item>
             <Typography variant='h2'>
               My toolpack includes: <br /> HTML, CSS, JavaScript... <br />
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary"
+                component={Link} to="/skills">
                 Skills
               </Button>
             </Typography>
@@ -116,7 +120,8 @@ const Home = (props) => {
           <Grid item>
             <Typography variant='h2'>
               Check out my work<br />
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary"
+                component={Link} to="/projects">
                 Projects
               </Button>
             </Typography>
@@ -140,7 +145,8 @@ const Home = (props) => {
           <Grid item>
             <Typography variant='h2'>
               My information. <br />
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary"
+                component={Link} to="/contact">
                 Contact me
             </Button>
             </Typography>
