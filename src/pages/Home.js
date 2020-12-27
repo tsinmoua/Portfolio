@@ -80,7 +80,6 @@ const Home = (props) => {
               Fitness Enthusiast.
               <br />
               <Button variant="contained" color="secondary"
-                component={Link} to="/about"
                 component={Link} to="/about">
                 Learn more about me
               </Button>
