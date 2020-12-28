@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { Link } from 'react-router-dom'
 
 import about from '../assets/About.png'
@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
   hello: {
     backgroundImage: 'linear-gradient(#004080, black)',
     height: '90vh',
-    [theme.breakpoints.down("xs")]: {
-      height: '50vh'
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   height: '50vh'
+    // },
 
   },
   helloText: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '5rem'
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: '3rem'
+      fontSize: '2rem'
     },
   },
   info: {
@@ -46,34 +46,31 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("500")]: {
       height: '10rem',
-      margin: '.5rem'
     },
-    [theme.breakpoints.down("400")]: {
+    [theme.breakpoints.down("450")]: {
       height: '9rem',
-      margin: '.5rem'
+      margin: 'auto',
+      display: 'block'
     },
   },
   infoText: {
+    fontWeight: 500,
     [theme.breakpoints.down("lg")]: {
-      fontSize: '3.75rem'
+      fontSize: '3.75rem',
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: '3rem'
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("640")]: {
       fontSize: '2rem'
     },
   },
   sections: {
     height: '60vh',
     [theme.breakpoints.down("lg")]: {
-      height: '70vh',
-    },
-    [theme.breakpoints.down("md")]: {
       height: '50vh',
     },
-
-  }
+  },
 }))
 
 const Home = (props) => {
@@ -97,7 +94,7 @@ const Home = (props) => {
           className={classes.sections}
         >
           <Grid item>
-            <Typography variant='h2' className={classes.infoText} style={{paddingTop: '5rem'}}>
+            <Typography variant='h2' className={classes.infoText}>
               Full Stack Engineer.
               <br />
               Husband/Father.
