@@ -1,6 +1,8 @@
 import React from "react"
 import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
 
+import collage from '../assets/collage.png'
+
 const useStyles = makeStyles((theme) => ({
   header: {
     backgroundImage: 'linear-gradient(#004080, black)',
@@ -39,9 +41,13 @@ const About = (props) => {
       </Typography>
       </Grid>
 
-      <Grid container className={classes.about}>
-        <Grid item>
-          <Typography variant='h2'>
+      <Grid container justify='center' style={{ width: '100%', height: '50vh' }}>
+        <img src={collage} alt='Collage' style={{ width: '75%', position: 'relative', top: '-8rem' }} />
+      </Grid>
+
+      <Grid container className={classes.about} justify='center' >
+        <Grid container style={{ height: '50vh', width: '75%' }} alignItems='center' justify='center'>
+          <Typography variant='h4'>
             I am a Full Stack Engineer with a background in Accounting, based in St. Paul, Minnesota.
             <br />
             I enjoy building applications that can fulfill your needs.
@@ -51,6 +57,8 @@ const About = (props) => {
             Feel free to take a look at my latest projects in the projects tab.
           </Typography>
         </Grid>
+        <br />
+
       </Grid>
     </React.Fragment>
   )
