@@ -6,7 +6,7 @@ import badge from '../assets/badge.png'
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    backgroundImage: 'linear-gradient(#004080, #00264d)',
+    backgroundImage: 'linear-gradient(#004080, black)',
     height: '45vh',
     [theme.breakpoints.down("xs")]: {
       height: '30vh'
@@ -91,10 +91,6 @@ const About = (props) => {
             <img src={badge} alt='Badge' style={{ width: '20rem' }} />
           </Grid>
         </Grid>
-
-        {/* <Grid container justify='center' style={{ width: '100%' }}>
-          <img src={collage} alt='Collage' style={{ width: '75%' }} />
-        </Grid> */}
 
         <Grid container justify='center' alignItems='center' className={classes.info}>
           <Grid item>

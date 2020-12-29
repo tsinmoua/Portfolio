@@ -94,7 +94,7 @@ function Navbar(props) {
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
-    if (window.location.pathname === '/' && value !== 0) {
+    if (window.location.pathname === '/' && value !== '1') {
       setValue('1')
     } else if (window.location.pathname === '/about' && value !== '2') {
       setValue('2')
@@ -105,7 +105,7 @@ function Navbar(props) {
     } else if (window.location.pathname === '/contact' && value !== '5') {
       setValue('5')
     }
-  }, [value, window.location.pathname] )
+  }, [value] )
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
