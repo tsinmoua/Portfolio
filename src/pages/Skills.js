@@ -128,7 +128,7 @@ const Skills = (props) => {
             </Typography>
         </Grid>
 
-        <Grid container justify='center' alignItems='center' style={{ marginTop: '10vh', marginBottom: '10vh' }}>
+        <Grid container justify='center' alignItems='center' style={{ marginBottom: '10vh' }}>
           {images.map(image => {
             return (
               <Grid container direction='column' justify='center' alignItems='center' className={classes.imagesContainer}>
