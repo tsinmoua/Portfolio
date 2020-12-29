@@ -5,15 +5,7 @@ import email from '../assets/email.png'
 import github from '../assets/github_link.png'
 import linkedin from '../assets/linkedin.png'
 import resume from '../assets/resume.png'
-import phone from '../assets/phone.png'
-
-const images = [
-  { image: resume, text: 'Resume' },
-  { image: email, text: 'tsinmoua@gmail.com' },
-  { image: phone, text: '(651)214-1980' },
-  { image: github, text: 'GitHub Account' },
-  { image: linkedin, text: 'LinkedIn Account' },
-]
+import TsinMouaResume from '../assets/TsinMouaResume.pdf'
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -41,14 +33,20 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   padding: {
-    padding: '6rem',
+    padding: '3rem',
     [theme.breakpoints.down("xs")]: {
-      padding: '2rem',
+      padding: '1rem',
     },
   },
   buttons: {
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: 'transparent'
+    },
+  },
+  buttonImages: {
     height: '4rem'
-  }
+  },
 }))
 
 const Contact = (props) => {
@@ -64,31 +62,85 @@ const Contact = (props) => {
 
       <Grid container className={classes.main} justify='center' >
 
-        <Grid item className={classes.padding}>
-          <Typography variant='h4' className={classes.infoText}>
-            <span style={{ fontWeight: 'bold' }}>Lets Connect!</span><br /><br />
-          </Typography>
+        <Grid container direction='column' justify='center' alignItems='center'
+          className={classes.padding} style={{ textAlign: 'center' }}
+        >
+          <Grid item>
+            <Typography variant='h4' className={classes.infoText}>
+              <span style={{ fontWeight: 'bold' }}>Want to contact me?</span><br />
+              Easiest way to get reach of me is through email.
+            </Typography>
+          </Grid>
+          <Grid container justify='center' alignItems='center'>
+            <Button color='primary'
+              href="mailto:tsinmoua@gmail.com"
+              className={classes.buttons}
+              disableRipple>
+              <img src={email} alt='email' className={classes.buttonImages} />
+            </Button>
+            <Typography variant='h5' className={classes.infoText}>
+              tsinmoua@gmail.com
+            </Typography>
+          </Grid>
         </Grid>
 
-        <Grid container justify='center' alignItems='center'>
-          {images.map(icon => {
-            return (
-              <Grid item style={{ width: '100%', textAlign: 'center' }}>
-                <Button color='primary'>
-                  <img src={icon.image} alt={icon.text} className={classes.buttons} />
-                </Button>
-                <Typography variant='h4' className={classes.infoText}>
-                  {icon.text}
-                </Typography>
-              </Grid>
-            )
-          })}
+        <Grid container direction='column' justify='center' alignItems='center'
+          className={classes.padding} style={{ textAlign: 'center' }}
+        >
+          <Grid item>
+            <Typography variant='h4' className={classes.infoText}>
+              <span style={{ fontWeight: 'bold' }}>Job Opportunity?</span><br />
+              Check out my resume!
+            </Typography>
+          </Grid>
+          <Grid container justify='center' alignItems='center'>
+            <Button color='primary'
+              href={TsinMouaResume} target='_blank'
+              className={classes.buttons}
+            >
+              <img src={resume} alt='resume' className={classes.buttonImages} />
+            </Button>
+            <Typography variant='h5' className={classes.infoText}>
+              My Resume
+            </Typography>
+          </Grid>
+        </Grid>
 
+        <Grid container direction='column' justify='center' alignItems='center'
+          className={classes.padding} style={{ textAlign: 'center' }}
+        >
+          <Grid item>
+            <Typography variant='h4' className={classes.infoText}>
+              <span style={{ fontWeight: 'bold' }}>Lets Connect</span><br />
+              Follow me on LinkedIn and GitHub to see what I am up to!
+            </Typography>
+          </Grid>
+          <Grid container justify='center' alignItems='center'>
+            <Button
+              href='https://www.linkedin.com/in/tsinmoua/' target='_blank'
+              className={classes.buttons}
+            >
+              <img src={linkedin} alt='linkedin' className={classes.buttonImages} />
+            </Button>
+            <Typography variant='h5' className={classes.infoText}>
+              linkedin.com/in/tsinmoua
+            </Typography>
+          </Grid>
+          <Grid container justify='center' alignItems='center'>
+            <Button
+              href='https://github.com/tsinmoua' target='_blank'
+              className={classes.buttons}
+            >
+              <img src={github} alt='github' className={classes.buttonImages} />
+            </Button>
+            <Typography variant='h5' className={classes.infoText}>
+              github.com/tsinmoua
+            </Typography>
+          </Grid>
         </Grid>
 
       </Grid>
-
-    </React.Fragment>
+    </React.Fragment >
   )
 };
 

@@ -104,7 +104,7 @@ const Home = (props) => {
           className={classes.sections}
         >
           <Grid item>
-            <Typography variant='h2' className={classes.infoText}>
+            <Typography variant='h4' className={classes.infoText}>
               Full Stack Engineer.
               <br />
               Husband/Father.
@@ -136,7 +136,7 @@ const Home = (props) => {
             />
           </Grid>
           <Grid item>
-            <Typography variant='h2' className={classes.infoText}>
+            <Typography variant='h4' className={classes.infoText}>
               My toolpack: <br /> HTML, CSS, <br />JavaScript... <br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/skills">
@@ -152,7 +152,7 @@ const Home = (props) => {
           className={classes.sections}
         >
           <Grid item>
-            <Typography variant='h2' className={classes.infoText}>
+            <Typography variant='h4' className={classes.infoText}>
               Check out my<br /> work<br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/projects">
@@ -178,7 +178,7 @@ const Home = (props) => {
             />
           </Grid>
           <Grid item>
-            <Typography variant='h2' className={classes.infoText}>
+            <Typography variant='h4' className={classes.infoText}>
               My information. <br />
               <Button variant="contained" color="secondary"
                 component={Link} to="/contact">
