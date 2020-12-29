@@ -110,9 +110,10 @@ const Skills = (props) => {
 
   return (
     <React.Fragment>
+
       <Grid container justify='center' alignItems='center' className={classes.header}>
         <Typography variant='h1' className={classes.headerText}>
-          Skills
+          Technical Skills
       </Typography>
       </Grid>
 
@@ -139,7 +140,6 @@ const Skills = (props) => {
             )
           })}
         </Grid>
-
       </Grid>
 
     </React.Fragment>
