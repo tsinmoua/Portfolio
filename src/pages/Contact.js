@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttons: {
-    margin: '1.5rem',
+    margin: '.65rem 1rem .65rem 1rem',
+    padding: 0,
     '&:hover': {
       backgroundColor: 'transparent',
     },
@@ -55,17 +56,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   infoText: {
-    fontSize: '2rem',
-    [theme.breakpoints.down("925")]: {
-      fontSize: '1.5rem',
+    fontSize: '1.5rem',
+    [theme.breakpoints.down("md")]: {
+      fontSize: '1rem'
     },
-    [theme.breakpoints.down("718")]: {
-      fontSize: '1.25rem',
-    },
-    [theme.breakpoints.down("550")]: {
-      fontSize: '1rem',
-    },
-  }
+  },
 }))
 
 const Contact = (props) => {
@@ -90,7 +85,7 @@ const Contact = (props) => {
               Easiest way to get reach of me is through email.
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
+          <Grid container justify='center' alignItems='center'>
             <Button color='primary'
               href="mailto:tsinmoua@gmail.com"
               className={classes.buttons}
@@ -112,7 +107,7 @@ const Contact = (props) => {
               Check out my resume!
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
+          <Grid container justify='center' alignItems='center'>
             <Button color='primary'
               href={TsinMouaResume} target='_blank'
               className={classes.buttons}
@@ -134,7 +129,7 @@ const Contact = (props) => {
               Follow me on LinkedIn and GitHub to see what I am up to!
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
+          <Grid container justify='center' alignItems='center'>
             <Button
               href='https://www.linkedin.com/in/tsinmoua/' target='_blank'
               className={classes.buttons}
