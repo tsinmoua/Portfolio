@@ -1,6 +1,7 @@
-import React from "react"
-import { Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import React, { useState } from "react"
+import { Button, Grid, makeStyles, Typography, } from "@material-ui/core";
 import { Link } from 'react-router-dom'
+import Flash from 'react-reveal/Flash';
 
 import about from '../assets/About.png'
 import tools from '../assets/Tools.png'
@@ -46,15 +47,16 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("500")]: {
       height: '10rem',
+
     },
-    [theme.breakpoints.down("450")]: {
+    [theme.breakpoints.down("460")]: {
       height: '9rem',
-      margin: 'auto',
+      margin: '.5rem',
       display: 'block'
     },
   },
   infoText: {
-    fontWeight: 500,
+    // fontWeight: 400,
     [theme.breakpoints.down("lg")]: {
       fontSize: '3.75rem',
     },
@@ -63,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("640")]: {
       fontSize: '2rem'
+    },
+    [theme.breakpoints.down("375")]: {
+      fontSize: '1.5rem'
     },
   },
   sections: {
@@ -75,15 +80,20 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
   const classes = useStyles();
+  const [counter, setCounter] = useState(0)
+
+  setTimeout(() => { setCounter(counter + 1) }, 4000)
 
   return (
     <Grid container>
 
       <Grid container justify='center' alignItems='center' className={classes.hello}>
-        <Typography variant='h1' className={classes.helloText}>
-          Hello,<br />
-          My name is Tsin.
-        </Typography>
+        <Flash spy={counter}>
+          <Typography variant='h1' className={classes.helloText}>
+            Hello,<br />
+            My name is Tsin.
+          </Typography>
+        </Flash>
       </Grid>
 
       <Grid container className={classes.info}>

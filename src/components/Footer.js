@@ -12,12 +12,23 @@ const useStyles = makeStyles((theme) => ({
   },
   footerLinks: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down("400")]: {
+      fontSize: '.6rem'
+    },
   },
   footerContainer: {
     height: '100%',
     width: '100%',
     margin: 'auto'
+  },
+  copyright: {
+    textDecoration: 'none',
+    color: 'white',
+    fontSize: '.75rem',
+    [theme.breakpoints.down("400")]: {
+      fontSize: '.50rem'
+    },
   }
 }))
 
@@ -54,7 +65,7 @@ const Footer = (props) => {
 
         <Grid container justify='center' alignItems='flex-end' >
           <Grid item>
-            <Typography variant='subtitle2' className={classes.footerLinks} style={{ fontSize: '.75rem' }}>
+            <Typography variant='subtitle2' className={classes.copyright}>
               Copyright © 2020 Tsin Moua &bull; Greater Minneapolis/Saint Paul, MN
             </Typography>
           </Grid>
