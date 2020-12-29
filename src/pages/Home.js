@@ -13,10 +13,6 @@ const useStyles = makeStyles((theme) => ({
   hello: {
     backgroundImage: 'linear-gradient(#004080, black)',
     height: '90vh',
-    // [theme.breakpoints.down("xs")]: {
-    //   height: '50vh'
-    // },
-
   },
   helloText: {
     fontSize: '10rem',
@@ -36,44 +32,36 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   images: {
-    height: '20rem',
+    height: '15rem',
     margin: '5rem',
     [theme.breakpoints.down("md")]: {
-      height: '15rem',
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: '12rem',
+      height: '10rem',
       margin: '1rem',
     },
+    // [theme.breakpoints.down("700")]: {
+    //   height: '13rem',
+    //   margin: '3rem',
+    // },
     [theme.breakpoints.down("500")]: {
-      height: '10rem',
-
-    },
-    [theme.breakpoints.down("460")]: {
-      height: '9rem',
+      height: '15rem',
       margin: '.5rem',
       display: 'block'
-    },
+    }
   },
   infoText: {
-    // fontWeight: 400,
-    [theme.breakpoints.down("lg")]: {
-      fontSize: '3.75rem',
-    },
+    fontSize: '2.5rem',
     [theme.breakpoints.down("sm")]: {
-      fontSize: '3rem'
-    },
-    [theme.breakpoints.down("640")]: {
       fontSize: '2rem'
     },
-    [theme.breakpoints.down("375")]: {
+    [theme.breakpoints.down("500")]: {
+      padding: '2rem',
       fontSize: '1.5rem'
     },
   },
   sections: {
-    height: '60vh',
-    [theme.breakpoints.down("lg")]: {
-      height: '50vh',
+    height: '70vh',
+    [theme.breakpoints.down("520")]: {
+      height: '80vh',
     },
   },
 }))
@@ -96,7 +84,7 @@ const Home = (props) => {
         </Flash>
       </Grid>
 
-      <Grid container className={classes.info}>
+      <Grid container className={classes.info} spacing={0}>
 
         <Grid container
           justify='center'
@@ -105,15 +93,14 @@ const Home = (props) => {
         >
           <Grid item>
             <Typography variant='h4' className={classes.infoText}>
-              Full Stack Engineer.
-              <br />
-              Husband/Father.
-              <br />
-              Fitness Enthusiast.
-              <br />
-              <Button variant="contained" color="secondary"
-                component={Link} to="/about">
-                Learn more about me
+              <span style={{ fontWeight: "bold" }}>Tsin Moua</span>
+              <br /><br />
+              I am a...<br />
+              Software Engineer. Husband.<br />
+              Father. Fitness Enthusiast.<br />
+              <Button variant="contained" color="primary"
+                component={Link} to="/about" style={{ color: '#FFC04A' }}>
+                Learn more
               </Button>
             </Typography>
           </Grid>
@@ -137,10 +124,14 @@ const Home = (props) => {
           </Grid>
           <Grid item>
             <Typography variant='h4' className={classes.infoText}>
-              My toolpack: <br /> HTML, CSS, <br />JavaScript... <br />
-              <Button variant="contained" color="secondary"
-                component={Link} to="/skills">
-                Skills
+              <span style={{ fontWeight: "bold" }}>Toolpack</span>
+              <br /><br />
+              HTML, CSS, JavaScript<br />
+              MySQL, MongoDB<br />
+              and so much more!<br />
+              <Button variant="contained" color="primary"
+                component={Link} to="/skills" style={{ color: '#FFC04A' }}>
+                Learn more
               </Button>
             </Typography>
           </Grid>
@@ -153,10 +144,13 @@ const Home = (props) => {
         >
           <Grid item>
             <Typography variant='h4' className={classes.infoText}>
-              Check out my<br /> work<br />
-              <Button variant="contained" color="secondary"
-                component={Link} to="/projects">
-                Projects
+              <span style={{ fontWeight: "bold" }}>My work</span>
+              <br /><br />
+              Works from collaboration.<br />
+              Works from myself.<br />
+              <Button variant="contained" color="primary"
+                component={Link} to="/projects" style={{ color: '#FFC04A' }}>
+                Learn more
               </Button>
             </Typography>
           </Grid>
@@ -179,11 +173,14 @@ const Home = (props) => {
           </Grid>
           <Grid item>
             <Typography variant='h4' className={classes.infoText}>
-              My information. <br />
-              <Button variant="contained" color="secondary"
-                component={Link} to="/contact">
-                Contact me
-            </Button>
+              <span style={{ fontWeight: "bold" }}>Get in touch</span>
+              <br /><br />
+              Email me.<br />
+              Connect with me.<br />
+              <Button variant="contained" color="primary"
+                component={Link} to="/contact" style={{ color: '#FFC04A' }}>
+                Learn more
+              </Button>
             </Typography>
           </Grid>
         </Grid>
