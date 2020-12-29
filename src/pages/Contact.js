@@ -39,13 +39,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttons: {
-    backgroundColor: 'transparent',
+    margin: '1.5rem',
     '&:hover': {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+    },
+    [theme.breakpoints.down("md")]: {
+      margin: '0',
     },
   },
   buttonImages: {
-    height: '4rem'
+    height: '4rem',
+    '&:hover': {
+      transition: 'transform .2s',
+      transform: 'scale(1.5)'
+    },
   },
   infoText: {
     fontSize: '2rem',
@@ -83,7 +90,7 @@ const Contact = (props) => {
               Easiest way to get reach of me is through email.
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{paddingTop: '1rem'}}>
+          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
             <Button color='primary'
               href="mailto:tsinmoua@gmail.com"
               className={classes.buttons}
@@ -105,7 +112,7 @@ const Contact = (props) => {
               Check out my resume!
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{paddingTop: '1rem'}}>
+          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
             <Button color='primary'
               href={TsinMouaResume} target='_blank'
               className={classes.buttons}
@@ -127,7 +134,7 @@ const Contact = (props) => {
               Follow me on LinkedIn and GitHub to see what I am up to!
             </Typography>
           </Grid>
-          <Grid container justify='center' alignItems='center' style={{paddingTop: '1rem'}}>
+          <Grid container justify='center' alignItems='center' style={{ paddingTop: '1rem' }}>
             <Button
               href='https://www.linkedin.com/in/tsinmoua/' target='_blank'
               className={classes.buttons}
