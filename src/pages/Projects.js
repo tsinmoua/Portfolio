@@ -29,6 +29,8 @@ import react from "../assets/React.png";
 import Sequelize from "../assets/Sequelize.png";
 import SQL from "../assets/SQL.png";
 import Webpack from "../assets/Webpack.png";
+import repo from "../assets/github_link.png";
+import external from "../assets/external.png";
 
 const tools = {
   HTML: { image: HTML, caption: 'HTML' },
@@ -58,49 +60,49 @@ const tools = {
 const projects = [
   {
     image: MachliFitness, name: 'Machli Fitness',
-    text: 'textfield',
+    text: 'A platform for personal trainers to connect to their clients',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.MaterialUI, tools.react, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['axios', 'moment', 'socket.io', 'bcryptjs', 'passport'],
+    other: ['Other: ', 'axios,', 'moment,', 'socket.io,', 'bcryptjs,', 'passport'],
     github: 'link',
     app: 'applink'
   },
   {
     image: BudgetTracker, name: 'Budget Tracker',
-    text: 'textfield',
+    text: 'Keep track of your budget/income/expenses',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['bcryptjs', 'chart.js'],
+    other: ['Other: ', 'bcryptjs,', 'chart.js'],
     github: 'link',
     app: 'applink'
   },
   {
     image: EmployeeDirectory, name: 'Employee Directory',
-    text: 'textfield',
+    text: 'Sort and search for an employee to see their info',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react],
-    other: ['axios', 'RandomUser API'],
+    other: ['Other: ', 'axios,', 'RandomUser API'],
     github: 'link',
     app: 'applink'
   },
   {
     image: TheLibrary, name: 'The Library',
-    text: 'textfield',
+    text: 'Search/Save books of interest and get more information about them',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['axios', 'Google Books API'],
+    other: ['Other: ', 'axios,', 'Google Books API'],
     github: 'link',
     app: 'applink'
   },
   {
     image: WorkoutTracker, name: 'Workout Tracker',
-    text: 'textfield',
+    text: 'Keep track of your workouts and see their stats',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['N/A'],
+    other: ['Other: ', 'N/A'],
     github: 'link',
     app: 'applink'
   },
   {
     image: WeatherDashboard, name: 'Weather Dashboard',
-    text: 'textfield',
+    text: 'See the current and forecasted weather for the chosen location',
     tools: [tools.GitHub, tools.Bootstrap, tools.jQuery],
-    other: ['OpenWeatherMap API'],
+    other: ['Other: ', 'OpenWeatherMap API'],
     github: 'link',
     app: 'applink'
   },
@@ -145,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     maxWidth: '100%',
-    height: '50',
+    padding: '.5rem',
   },
   images: {
     height: '100%',
@@ -153,6 +155,13 @@ const useStyles = makeStyles((theme) => ({
   },
   imageItem: {
     height: '2rem'
+  },
+  buttons: {
+    height: '2rem',
+    width: '2rem',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   }
 
 }))
@@ -171,9 +180,9 @@ const Skills = (props) => {
 
       <Grid container className={classes.main} justify='center' >
 
-        {projects.map(project => {
+        {projects.map((project, index) => {
           return (
-            <Grid container style={{ width: '33%', padding: '2rem' }}>
+            <Grid container key={index} style={{ width: '33%', padding: '2rem' }}>
 
               <Card className={classes.card}>
 
@@ -187,23 +196,35 @@ const Skills = (props) => {
                 </CardActionArea>
 
                 <CardContent>
+
+                  <CardActions>
+                    <Grid container justify='center' >
+                      <Button color="primary" variant='contained' >
+                        <img src={repo} alt='Github' className={classes.buttons} />
+                      </Button>
+                      <Button color="primary" variant='contained'>
+                        <img src={external} alt='Application' className={classes.buttons} />
+                      </Button>
+                    </Grid>
+                  </CardActions>
+
                   <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: 'center' }}>
                     {project.name}
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body2" color="textSecondary" component="p" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
                     {project.text}
                   </Typography>
 
-                  <Grid container>
-                    <Grid item>
+                  <Grid container justify='center'>
+                    {/* <Grid item>
                       <Typography variant='subtitle2'>
                         <br />Tools:
                       </Typography>
-                    </Grid>
-                    <Grid container>
-                      {project.tools.map(tools => {
+                    </Grid> */}
+                    <Grid container justify='center'>
+                      {project.tools.map((tools, index) => {
                         return (
-                          <Grid item className={classes.imageItem}>
+                          <Grid item key={index} className={classes.imageItem}>
                             <img src={tools.image} alt={tools.caption} className={classes.images} />
                           </Grid>
                         )
@@ -211,18 +232,18 @@ const Skills = (props) => {
                     </Grid>
                   </Grid>
 
-                  <Grid container>
-                    <Grid item>
+                  <Grid container justify='center'>
+                    {/* <Grid item>
                       <Typography gutterBottom variant="subtitle2">
                         <br />Other:
                     </Typography>
-                    </Grid>
-                    <Grid container>
-                      {project.other.map(other => {
+                    </Grid> */}
+                    <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
+                      {project.other.map((other, index) => {
                         return (
                           <>
-                            <Typography variant='subtitle2'>
-                              {other}, &nbsp;
+                            <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
+                              {other}
                             </Typography>
                           </>
                         )
@@ -231,16 +252,7 @@ const Skills = (props) => {
                   </Grid>
 
                 </CardContent>
-                <CardActions>
-                  <Grid container alignItems='flex-end'>
-                    <Button size="small" color="primary">
-                      Share
-                    </Button>
-                    <Button size="small" color="primary">
-                      Learn More
-                    </Button>
-                  </Grid>
-                </CardActions>
+
               </Card>
             </Grid>
           )
