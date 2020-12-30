@@ -30,7 +30,7 @@ const images = [
   { image: jQuery, caption: 'jQuery' },
   { image: Node, caption: 'Node' },
   { image: Express, caption: 'Express' },
-  { image: react, caption: 'react' },
+  { image: react, caption: 'React' },
   { image: NoSQL, caption: 'NoSQL' },
   { image: MongoDB, caption: 'MongoDB' },
   { image: Mongoose, caption: 'Mongoose' },

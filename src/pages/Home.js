@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   sections: {
     height: '70vh',
     [theme.breakpoints.down("520")]: {
-      height: '80vh',
+      height: '90vh',
     },
   },
 }))
@@ -75,7 +75,7 @@ const Home = (props) => {
   return (
     <Grid container>
 
-      <Grid container justify='center' alignItems='center' className={classes.hello}>
+      <Grid container justify='center' alignItems='center' className={classes.hello} >
         <Flash spy={counter}>
           <Typography variant='h1' className={classes.helloText}>
             Hello,<br />
@@ -84,7 +84,7 @@ const Home = (props) => {
         </Flash>
       </Grid>
 
-      <Grid container className={classes.info} spacing={0}>
+      <Grid container className={classes.info}>
 
         <Grid container
           justify='center'

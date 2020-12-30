@@ -23,26 +23,43 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '3rem'
     },
   },
+  main: {
+    color: theme.palette.primary.main,
+  },
+  infoText: {
+    fontSize: '1.5rem',
+    [theme.breakpoints.down("md")]: {
+      fontSize: '1rem'
+    },
+  },
+  padding: {
+    padding: '6rem',
+    [theme.breakpoints.down("xs")]: {
+      padding: '2rem',
+    },
+  },
+  
 }))
 
-const Projects = (props) => {
+const Skills = (props) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
+
       <Grid container justify='center' alignItems='center' className={classes.header}>
         <Typography variant='h1' className={classes.headerText}>
           Projects
       </Typography>
       </Grid>
 
-      <Grid container>
-        <Grid item>
-          test
-        </Grid>
+      <Grid container className={classes.main} justify='center' >
+        TESTS
+        
       </Grid>
+
     </React.Fragment>
   )
 };
 
-export default Projects;
+export default Skills;
