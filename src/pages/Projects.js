@@ -64,7 +64,6 @@ const tools = {
   Webpack: { image: Webpack, caption: 'Webpack' }
 }
 
-
 const projects = [
   {
     image: MachliFitness, name: 'Machli Fitness', id: 'MachliFitness',
@@ -202,26 +201,18 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0,
     transition: 'opacity .5s, visibility .5s',
     '&:hover': {
-      // visibility: 'visible',
       opacity: 1,
     }
   },
-  // cardAction: {
-  //   '&:hover': {
-  //     visibility: 'visible',
-  //     opacity: 1,
-  //   }
-  // }
 
 }))
 
-const Skills = (props) => {
+const Projects = (props) => {
   const classes = useStyles();
-
-  const [value, setValue] = useState()
-
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const [value, setValue] = useState()
 
   const handleClickOpen = (e) => {
     setValue(parseInt(e.currentTarget.value))
@@ -231,9 +222,9 @@ const Skills = (props) => {
     setValue()
   };
 
+
   return (
     <React.Fragment>
-
       <Grid container justify='center' alignItems='center' className={classes.header}>
         <Typography variant='h1' className={classes.headerText}>
           Projects
@@ -249,56 +240,56 @@ const Skills = (props) => {
             It comprises of solo and collaboration work.
             I partook in both front-end and back-end work during collaborations.
             Click on a project to learn more.
-          </Typography>
+        </Typography>
         </Grid>
 
-        {projects.map((project, index) => {
-          return (
-            <Grid container key={index} className={classes.projectContainer}>
-              <Card className={classes.card} >
-                <CardActionArea onClick={handleClickOpen} value={index} className={classes.cardAction}>
-                  <CardMedia
-                    component="img"
-                    alt={project.name}
-                    height="100%"
-                    image={project.image}
-                  />
-                  <Typography variant='h1' className={classes.imageText}>
-                    Learn more<br />
-                    <img src={click} alt='Click' style={{ width: '10rem' }} />
-                  </Typography>
-                </CardActionArea>
-              </Card>
+        <Grid container justify='center' alignItems='center'>
+          {projects.map((project, index) => {
+            return (
+              <Grid container key={index} className={classes.projectContainer}>
+                <Card className={classes.card} >
+                  <CardActionArea onClick={handleClickOpen} value={index} className={classes.cardAction}>
+                    <CardMedia
+                      component="img"
+                      alt={project.name}
+                      height="100%"
+                      image={project.image}
+                    />
+                    <Typography variant='h1' className={classes.imageText}>
+                      Learn more<br />
+                      <img src={click} alt='Click' style={{ width: '10rem' }} />
+                    </Typography>
+                  </CardActionArea>
+                </Card>
 
-              <Dialog
-                fullScreen={fullScreen}
-                maxWidth='md'
-                open={value === index}
-                onClose={handleClose}
-              >
-                <DialogContent className={classes.dialog}>
+                <Dialog
+                  fullScreen={fullScreen}
+                  maxWidth='md'
+                  open={value === index}
+                  onClose={handleClose}
+                >
+                  <DialogContent className={classes.dialog}>
+                    <Grid container justify='flex-end'>
+                      <Button style={{ padding: 0, display: 'block' }}>
+                        <ClearIcon onClick={handleClose} />
+                      </Button>
+                    </Grid>
 
-                  <Grid container justify='flex-end'>
-                    <Button style={{ padding: 0, display: 'block' }}>
-                      <ClearIcon onClick={handleClose} />
-                    </Button>
-                  </Grid>
+                    <img src={project.image} alt={project.name} style={{ width: '100%' }} />
 
-                  <img src={project.image} alt={project.name} style={{ width: '100%' }} />
+                    <Typography variant="h5" style={{ textAlign: 'center' }}>
+                      {project.name}
+                    </Typography>
+                    <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
+                      {project.text}
+                    </Typography>
 
-                  <Typography variant="h5" style={{ textAlign: 'center' }}>
-                    {project.name}
-                  </Typography>
-                  <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
-                    {project.text}
-                  </Typography>
-
-                  <Grid container>
                     <Grid container justify='center'>
                       <Typography variant='subtitle2' >
                         Powered by:
-                        </Typography>
+                      </Typography>
                     </Grid>
+
                     <Grid container justify='center'>
                       {project.tools.map((tools, index) => {
                         return (
@@ -308,55 +299,50 @@ const Skills = (props) => {
                         )
                       })}
                     </Grid>
-                  </Grid>
 
-                  <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
-                    <Typography variant='subtitle2' >
-                      Other: &nbsp;
-                        </Typography>
-                    {project.other.map((other, index) => {
-                      return (
-                        <>
+                    <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
+                      <Typography variant='subtitle2' >
+                        Other: &nbsp;
+                      </Typography>
+                      {project.other.map((other, index) => {
+                        return (
                           <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
                             {other}
                           </Typography>
-                        </>
-                      )
-                    })}
-                  </Grid>
-
-
-                  <DialogActions>
-                    <Grid container justify='center' >
-                      <Button color="primary" variant='contained'
-                        style={{ marginRight: '.5rem', height: '32px' }} className={classes.button}
-                      >
-                        <a href={project.github} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
-                          <img src={repo} alt='Github' className={classes.buttonImage} />
-                        </a>
-                      </Button>
-                      <Button color="primary" variant='contained' style={{ height: '32px', padding: 0, }}
-                        className={classes.button}
-                      >
-                        <a href={project.app} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
-                          <img src={external} alt='Application' className={classes.buttonImage} style={{ height: '24px', width: '24px', paddingTop: '4px' }} />
-                        </a>
-                      </Button>
+                        )
+                      })}
                     </Grid>
-                  </DialogActions>
 
-                </DialogContent>
-              </Dialog>
+                    <DialogActions>
+                      <Grid container justify='center' >
+                        <Button color="primary" variant='contained'
+                          style={{ marginRight: '.5rem', height: '32px' }} className={classes.button}
+                        >
+                          <a href={project.github} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
+                            <img src={repo} alt='Github' className={classes.buttonImage} />
+                          </a>
+                        </Button>
+                        <Button color="primary" variant='contained' style={{ height: '32px', padding: 0, }}
+                          className={classes.button}
+                        >
+                          <a href={project.app} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
+                            <img src={external} alt='Application' className={classes.buttonImage} style={{ height: '24px', width: '24px', paddingTop: '4px' }} />
+                          </a>
+                        </Button>
+                      </Grid>
+                    </DialogActions>
 
-            </Grid>
-          )
-        })}
-
+                  </DialogContent>
+                </Dialog>
+              </Grid>
+            )
+          })}
+        </Grid>
 
       </Grid>
-
     </React.Fragment>
   )
-};
+}
 
-export default Skills;
+
+export default Projects;

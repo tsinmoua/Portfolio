@@ -10,9 +10,21 @@ import contact from '../assets/contact.png'
 
 const useStyles = makeStyles((theme) => ({
 
-  hello: {
+  helloContainer: {
     backgroundImage: 'linear-gradient(#004080, black)',
     height: '90vh',
+  },
+  hello: {
+    fontSize: '250%',
+    // [theme.breakpoints.down("md")]: {
+    //   fontSize: '300%'
+    // },
+    // [theme.breakpoints.down("sm")]: {
+    //   fontSize: '14rem'
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //   fontSize: '6rem'
+    // },
   },
   helloText: {
     fontSize: '10rem',
@@ -25,14 +37,20 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '5rem'
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: '2rem'
+      fontSize: '4rem'
+    },
+    [theme.breakpoints.down("500")]: {
+      fontSize: '3rem'
+    },
+    [theme.breakpoints.down("375")]: {
+      fontSize: '2.5rem'
     },
   },
   info: {
     color: theme.palette.primary.main,
   },
   images: {
-    height: '15rem',
+    height: '20rem',
     margin: '5rem',
     [theme.breakpoints.down("md")]: {
       height: '10rem',
@@ -54,14 +72,15 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '2rem'
     },
     [theme.breakpoints.down("500")]: {
-      padding: '2rem',
-      fontSize: '1.5rem'
+      padding: '0 2rem 0 2rem',
+      fontSize: '1.5rem',
+      textAlign: 'center'
     },
   },
   sections: {
-    height: '70vh',
+    height: '50vh',
     [theme.breakpoints.down("520")]: {
-      height: '90vh',
+      height: '70vh',
     },
   },
 }))
@@ -75,10 +94,10 @@ const Home = (props) => {
   return (
     <Grid container>
 
-      <Grid container justify='center' alignItems='center' className={classes.hello} >
+      <Grid container justify='center' alignItems='center' className={classes.helloContainer} >
         <Flash spy={counter}>
           <Typography variant='h1' className={classes.helloText}>
-            Hello,<br />
+            <span className={classes.hello}>Hello,</span><br />
             My name is Tsin.
           </Typography>
         </Flash>
@@ -93,11 +112,9 @@ const Home = (props) => {
         >
           <Grid item>
             <Typography variant='h4' className={classes.infoText}>
-              <span style={{ fontWeight: "bold" }}>Tsin Moua</span>
-              <br /><br />
-              I am a...<br />
-              Software Engineer. Husband.<br />
-              Father. Fitness Enthusiast.<br />
+            <span style={{ fontWeight: "bold" }}>I am a...</span><br/><br/>
+              Software Engineer. <br />Husband.<br />
+              Father.<br /> Fitness Enthusiast.<br />
               <Button variant="contained" color="primary"
                 component={Link} to="/about" style={{ color: '#FFC04A' }}>
                 Learn more

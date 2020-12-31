@@ -102,7 +102,7 @@ function Navbar(props) {
     } else if (window.location.pathname === '/contact' && value !== '5') {
       setValue('5')
     }
-  }, [value] )
+  }, [value, window.location.pathname] )
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

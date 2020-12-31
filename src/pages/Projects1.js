@@ -1,5 +1,12 @@
-import React from "react"
-import { Grid, makeStyles, Typography, Card, CardActionArea, CardContent, CardMedia, CardActions, Button } from "@material-ui/core";
+import React, { useState } from "react"
+import {
+  Grid,
+  makeStyles, Typography,
+  Card, CardActionArea, CardMedia,
+  Button, useTheme, useMediaQuery,
+  Dialog, DialogContent, DialogActions,
+} from "@material-ui/core";
+import ClearIcon from '@material-ui/icons/Clear';
 
 import MachliFitness from '../assets/MachliFitness.png'
 import BudgetTracker from '../assets/BudgetTracker.png'
@@ -8,6 +15,7 @@ import TheLibrary from '../assets/TheLibrary.png'
 import WeatherDashboard from '../assets/WeatherDashboard.png'
 import WorkoutTracker from '../assets/WorkoutTracker.png'
 
+import click from "../assets/click.png";
 import HTML from "../assets/HTML.png";
 import Bootstrap from "../assets/Bootstrap.png";
 import CSS from "../assets/CSS.png";
@@ -59,52 +67,52 @@ const tools = {
 
 const projects = [
   {
-    image: MachliFitness, name: 'Machli Fitness',
+    image: MachliFitness, name: 'Machli Fitness', id: 'MachliFitness',
     text: 'A platform for personal trainers to connect to their clients',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.MaterialUI, tools.react, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['Other: ', 'axios,', 'moment,', 'socket.io,', 'bcryptjs,', 'passport'],
+    other: ['axios,', 'moment,', 'socket.io,', 'bcryptjs,', 'passport'],
     github: 'https://github.com/TotalAce/machliFitness',
-    app: 'https://machli-fitness.herokuapp.com/'
+    app: 'https://machli-fitness.herokuapp.com/',
   },
   {
-    image: BudgetTracker, name: 'Budget Tracker',
+    image: BudgetTracker, name: 'Budget Tracker', id: 'BudgetTracker',
     text: 'Keep track of your budget/income/expenses',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['Other: ', 'bcryptjs,', 'chart.js'],
+    other: ['bcryptjs,', 'chart.js'],
     github: 'https://github.com/ShueMoua/Budget_Tracker',
-    app: 'https://budget-hero.herokuapp.com/'
+    app: 'https://budget-hero.herokuapp.com/',
   },
   {
-    image: EmployeeDirectory, name: 'Employee Directory',
+    image: EmployeeDirectory, name: 'Employee Directory', id: 'EmployeeDirectory',
     text: 'Sort and search for an employee to see their info',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react],
-    other: ['Other: ', 'axios,', 'RandomUser API'],
+    other: ['axios,', 'RandomUser API'],
     github: 'https://github.com/tsinmoua/Employee-Directory',
-    app: 'https://desolate-ocean-52390.herokuapp.com/'
+    app: 'https://desolate-ocean-52390.herokuapp.com/',
   },
   {
-    image: TheLibrary, name: 'The Library',
+    image: TheLibrary, name: 'The Library', id: 'TheLibrary',
     text: 'Search/Save books of interest and get more information about them',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['Other: ', 'axios,', 'Google Books API'],
+    other: ['axios,', 'Google Books API'],
     github: 'https://github.com/tsinmoua/The-Library',
-    app: 'https://nist-library.herokuapp.com/'
+    app: 'https://nist-library.herokuapp.com/',
   },
   {
-    image: WorkoutTracker, name: 'Workout Tracker',
+    image: WorkoutTracker, name: 'Workout Tracker', id: 'WorkoutTracker',
     text: 'Keep track of your workouts and see their stats',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['Other: ', 'N/A'],
+    other: ['N/A'],
     github: 'https://github.com/tsinmoua/Workout-Tracker',
-    app: 'https://shrouded-temple-07479.herokuapp.com/'
+    app: 'https://shrouded-temple-07479.herokuapp.com/',
   },
   {
-    image: WeatherDashboard, name: 'Weather Dashboard',
+    image: WeatherDashboard, name: 'Weather Dashboard', id: 'WeatherDashboard',
     text: 'See the current and forecasted weather for the chosen location',
     tools: [tools.GitHub, tools.Bootstrap, tools.jQuery],
-    other: ['Other: ', 'OpenWeatherMap API'],
+    other: ['OpenWeatherMap API'],
     github: 'https://github.com/tsinmoua/Weather-Dashboard',
-    app: 'https://tsinmoua.github.io/Weather-Dashboard/'
+    app: 'https://tsinmoua.github.io/Weather-Dashboard/',
   },
 ]
 
@@ -156,18 +164,72 @@ const useStyles = makeStyles((theme) => ({
   imageItem: {
     height: '2rem'
   },
-  buttons: {
+  buttonImage: {
     height: '2rem',
     width: '2rem',
     '&:hover': {
       backgroundColor: 'transparent',
     },
-  }
+  },
+  button: {
+    '&:hover': {
+      backgroundColor: '#004080',
+    },
+  },
+  projectContainer: {
+    width: '45%',
+    padding: '.5rem',
+    margin: '.5rem',
+    [theme.breakpoints.down("760")]: {
+      width: '90%',
+      margin: 0
+    },
+  },
+  dialog: {
+    padding: 0,
+  },
+  imageText: {
+    textAlign: 'center',
+    padding: '3rem',
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'rgba(0, 64, 128, 0.8)',
+    color: '#FFC04A',
+    opacity: 0,
+    transition: 'opacity .5s, visibility .5s',
+    '&:hover': {
+      // visibility: 'visible',
+      opacity: 1,
+    }
+  },
+  // cardAction: {
+  //   '&:hover': {
+  //     visibility: 'visible',
+  //     opacity: 1,
+  //   }
+  // }
 
 }))
 
 const Skills = (props) => {
   const classes = useStyles();
+
+  const [value, setValue] = useState()
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const handleClickOpen = (e) => {
+    setValue(parseInt(e.currentTarget.value))
+  };
+
+  const handleClose = () => {
+    setValue()
+  };
 
   return (
     <React.Fragment>
@@ -180,47 +242,63 @@ const Skills = (props) => {
 
       <Grid container className={classes.main} justify='center' >
 
+        <Grid item className={classes.padding}>
+          <Typography variant='h4' className={classes.infoText}>
+            <span style={{ fontWeight: 'bold' }}>My Work</span><br /><br />
+            These are a few of the projects that I have worked on.
+            It comprises of solo and collaboration work.
+            I partook in both front-end and back-end work during collaborations.
+            Click on a project to learn more.
+          </Typography>
+        </Grid>
+
         {projects.map((project, index) => {
           return (
-            <Grid container key={index} style={{ width: '33%', padding: '2rem' }}>
-
-              <Card className={classes.card}>
-
-                <CardActionArea>
+            <Grid container key={index} className={classes.projectContainer}>
+              <Card className={classes.card} >
+                <CardActionArea onClick={handleClickOpen} value={index} className={classes.cardAction}>
                   <CardMedia
                     component="img"
                     alt={project.name}
                     height="100%"
                     image={project.image}
                   />
+                  <Typography variant='h1' className={classes.imageText}>
+                    Learn more<br />
+                    <img src={click} alt='Click' style={{ width: '10rem' }} />
+                  </Typography>
                 </CardActionArea>
+              </Card>
 
-                <CardContent>
+              <Dialog
+                fullScreen={fullScreen}
+                maxWidth='md'
+                open={value === index}
+                onClose={handleClose}
+              >
+                <DialogContent className={classes.dialog}>
 
-                  <CardActions>
-                    <Grid container justify='center' >
-                      <Button color="primary" variant='contained' >
-                        <img src={repo} alt='Github' className={classes.buttons} />
-                      </Button>
-                      <Button color="primary" variant='contained'>
-                        <img src={external} alt='Application' className={classes.buttons} />
-                      </Button>
-                    </Grid>
-                  </CardActions>
+                  <Grid container justify='flex-end'>
+                    <Button style={{ padding: 0, display: 'block' }}>
+                      <ClearIcon onClick={handleClose} />
+                    </Button>
+                  </Grid>
 
-                  <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: 'center' }}>
+                  <img src={project.image} alt={project.name} style={{ width: '100%' }} />
+
+                  <Typography variant="h5" style={{ textAlign: 'center' }}>
                     {project.name}
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
+                  <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
                     {project.text}
                   </Typography>
 
-                  <Grid container justify='center'>
-                    {/* <Grid item>
-                      <Typography variant='subtitle2'>
-                        <br />Tools:
-                      </Typography>
-                    </Grid> */}
+                  <Grid container>
+                    <Grid container justify='center'>
+                      <Typography variant='subtitle2' >
+                        Powered by:
+                        </Typography>
+                    </Grid>
                     <Grid container justify='center'>
                       {project.tools.map((tools, index) => {
                         return (
@@ -232,28 +310,44 @@ const Skills = (props) => {
                     </Grid>
                   </Grid>
 
-                  <Grid container justify='center'>
-                    {/* <Grid item>
-                      <Typography gutterBottom variant="subtitle2">
-                        <br />Other:
-                    </Typography>
-                    </Grid> */}
-                    <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
-                      {project.other.map((other, index) => {
-                        return (
-                          <>
-                            <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
-                              {other}
-                            </Typography>
-                          </>
-                        )
-                      })}
-                    </Grid>
+                  <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
+                    <Typography variant='subtitle2' >
+                      Other: &nbsp;
+                        </Typography>
+                    {project.other.map((other, index) => {
+                      return (
+                        <>
+                          <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
+                            {other}
+                          </Typography>
+                        </>
+                      )
+                    })}
                   </Grid>
 
-                </CardContent>
 
-              </Card>
+                  <DialogActions>
+                    <Grid container justify='center' >
+                      <Button color="primary" variant='contained'
+                        style={{ marginRight: '.5rem', height: '32px' }} className={classes.button}
+                      >
+                        <a href={project.github} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
+                          <img src={repo} alt='Github' className={classes.buttonImage} />
+                        </a>
+                      </Button>
+                      <Button color="primary" variant='contained' style={{ height: '32px', padding: 0, }}
+                        className={classes.button}
+                      >
+                        <a href={project.app} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
+                          <img src={external} alt='Application' className={classes.buttonImage} style={{ height: '24px', width: '24px', paddingTop: '4px' }} />
+                        </a>
+                      </Button>
+                    </Grid>
+                  </DialogActions>
+
+                </DialogContent>
+              </Dialog>
+
             </Grid>
           )
         })}
