@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from "./components/Theme";
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -16,6 +17,7 @@ function App() {
     <React.Fragment>
       <ThemeProvider theme={Theme}>
         <BrowserRouter>
+          <ScrollToTop />
           <Switch>
             <Navbar>
               <Route exact path='/' component={Home} />

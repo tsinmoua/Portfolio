@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Skills = (props) => {
+const Skills = () => {
   const classes = useStyles();
 
   return (

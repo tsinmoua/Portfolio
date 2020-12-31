@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Contact = (props) => {
+const Contact = () => {
   const classes = useStyles();
 
   return (

@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Home = (props) => {
+const Home = () => {
   const classes = useStyles();
   const [counter, setCounter] = useState(0)
 
