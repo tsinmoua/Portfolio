@@ -1,11 +1,5 @@
-import React, { useState } from "react"
-import {
-  Grid,
-  makeStyles, Typography,
-  Card, CardActionArea, CardMedia,
-  Button, useTheme, useMediaQuery,
-  Dialog, DialogContent, DialogContentText, DialogActions, DialogTitle
-} from "@material-ui/core";
+import React from "react"
+import { Grid, makeStyles, Typography, Card, CardActionArea, CardContent, CardMedia, CardActions, Button } from "@material-ui/core";
 
 import MachliFitness from '../assets/MachliFitness.png'
 import BudgetTracker from '../assets/BudgetTracker.png'
@@ -65,52 +59,52 @@ const tools = {
 
 const projects = [
   {
-    image: MachliFitness, name: 'Machli Fitness', id: 'MachliFitness',
+    image: MachliFitness, name: 'Machli Fitness',
     text: 'A platform for personal trainers to connect to their clients',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.MaterialUI, tools.react, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['axios,', 'moment,', 'socket.io,', 'bcryptjs,', 'passport'],
+    other: ['Other: ', 'axios,', 'moment,', 'socket.io,', 'bcryptjs,', 'passport'],
     github: 'https://github.com/TotalAce/machliFitness',
-    app: 'https://machli-fitness.herokuapp.com/',
+    app: 'https://machli-fitness.herokuapp.com/'
   },
   {
-    image: BudgetTracker, name: 'Budget Tracker', id: 'BudgetTracker',
+    image: BudgetTracker, name: 'Budget Tracker',
     text: 'Keep track of your budget/income/expenses',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.Express, tools.MySQL, tools.Sequelize],
-    other: ['bcryptjs,', 'chart.js'],
+    other: ['Other: ', 'bcryptjs,', 'chart.js'],
     github: 'https://github.com/ShueMoua/Budget_Tracker',
-    app: 'https://budget-hero.herokuapp.com/',
+    app: 'https://budget-hero.herokuapp.com/'
   },
   {
-    image: EmployeeDirectory, name: 'Employee Directory', id: 'EmployeeDirectory',
+    image: EmployeeDirectory, name: 'Employee Directory',
     text: 'Sort and search for an employee to see their info',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react],
-    other: ['axios,', 'RandomUser API'],
+    other: ['Other: ', 'axios,', 'RandomUser API'],
     github: 'https://github.com/tsinmoua/Employee-Directory',
-    app: 'https://desolate-ocean-52390.herokuapp.com/',
+    app: 'https://desolate-ocean-52390.herokuapp.com/'
   },
   {
-    image: TheLibrary, name: 'The Library', id: 'TheLibrary',
+    image: TheLibrary, name: 'The Library',
     text: 'Search/Save books of interest and get more information about them',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Bootstrap, tools.react, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['axios,', 'Google Books API'],
+    other: ['Other: ', 'axios,', 'Google Books API'],
     github: 'https://github.com/tsinmoua/The-Library',
-    app: 'https://nist-library.herokuapp.com/',
+    app: 'https://nist-library.herokuapp.com/'
   },
   {
-    image: WorkoutTracker, name: 'Workout Tracker', id: 'WorkoutTracker',
+    image: WorkoutTracker, name: 'Workout Tracker',
     text: 'Keep track of your workouts and see their stats',
     tools: [tools.Node, tools.GitHub, tools.Heroku, tools.Express, tools.MongoDB, tools.Mongoose],
-    other: ['N/A'],
+    other: ['Other: ', 'N/A'],
     github: 'https://github.com/tsinmoua/Workout-Tracker',
-    app: 'https://shrouded-temple-07479.herokuapp.com/',
+    app: 'https://shrouded-temple-07479.herokuapp.com/'
   },
   {
-    image: WeatherDashboard, name: 'Weather Dashboard', id: 'WeatherDashboard',
+    image: WeatherDashboard, name: 'Weather Dashboard',
     text: 'See the current and forecasted weather for the chosen location',
     tools: [tools.GitHub, tools.Bootstrap, tools.jQuery],
-    other: ['OpenWeatherMap API'],
+    other: ['Other: ', 'OpenWeatherMap API'],
     github: 'https://github.com/tsinmoua/Weather-Dashboard',
-    app: 'https://tsinmoua.github.io/Weather-Dashboard/',
+    app: 'https://tsinmoua.github.io/Weather-Dashboard/'
   },
 ]
 
@@ -175,21 +169,6 @@ const useStyles = makeStyles((theme) => ({
 const Skills = (props) => {
   const classes = useStyles();
 
-  const [value, setValue] = useState()
-  
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const handleClickOpen = (e) => {
-    setValue(parseInt(e.currentTarget.value))
-  };
-
-  const handleClose = () => {
-    setValue()
-  };
-
-  console.log(value)
-
   return (
     <React.Fragment>
 
@@ -203,9 +182,11 @@ const Skills = (props) => {
 
         {projects.map((project, index) => {
           return (
-            <Grid container key={index} style={{ width: '45%', padding: '.5rem', margin: '.5rem' }}>
-              <Card className={classes.card} >
-                <CardActionArea onClick={handleClickOpen} value={index} className='card'>
+            <Grid container key={index} style={{ width: '33%', padding: '2rem' }}>
+
+              <Card className={classes.card}>
+
+                <CardActionArea>
                   <CardMedia
                     component="img"
                     alt={project.name}
@@ -213,48 +194,51 @@ const Skills = (props) => {
                     image={project.image}
                   />
                 </CardActionArea>
-              </Card>
 
-              <Dialog
-                {...project}
-                maxWidth='md'
-                open={value === index}
-                onClose={handleClose}
-                aria-labelledby={project.id}
-              >
-                <DialogContent id={project.id}>
+                <CardContent>
 
-                  <img src={project.image} alt={project.name} style={{ width: '100%' }} />
-
-                  <DialogContentText>
-                    <Typography variant="h5" style={{ textAlign: 'center' }}>
-                      {project.name}
-                    </Typography>
-                    <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
-                      {project.text}
-                    </Typography>
-
-                    <Grid container>
-                      <Grid container justify='center'>
-                        <Typography variant='subtitle2' >
-                          Powered by:
-                        </Typography>
-                      </Grid>
-                      <Grid container justify='center'>
-                        {project.tools.map((tools, index) => {
-                          return (
-                            <Grid item key={index} className={classes.imageItem}>
-                              <img src={tools.image} alt={tools.caption} className={classes.images} />
-                            </Grid>
-                          )
-                        })}
-                      </Grid>
+                  <CardActions>
+                    <Grid container justify='center' >
+                      <Button color="primary" variant='contained' >
+                        <img src={repo} alt='Github' className={classes.buttons} />
+                      </Button>
+                      <Button color="primary" variant='contained'>
+                        <img src={external} alt='Application' className={classes.buttons} />
+                      </Button>
                     </Grid>
+                  </CardActions>
 
+                  <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: 'center' }}>
+                    {project.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
+                    {project.text}
+                  </Typography>
+
+                  <Grid container justify='center'>
+                    {/* <Grid item>
+                      <Typography variant='subtitle2'>
+                        <br />Tools:
+                      </Typography>
+                    </Grid> */}
+                    <Grid container justify='center'>
+                      {project.tools.map((tools, index) => {
+                        return (
+                          <Grid item key={index} className={classes.imageItem}>
+                            <img src={tools.image} alt={tools.caption} className={classes.images} />
+                          </Grid>
+                        )
+                      })}
+                    </Grid>
+                  </Grid>
+
+                  <Grid container justify='center'>
+                    {/* <Grid item>
+                      <Typography gutterBottom variant="subtitle2">
+                        <br />Other:
+                    </Typography>
+                    </Grid> */}
                     <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
-                      <Typography variant='subtitle2' >
-                        Other: &nbsp;
-                        </Typography>
                       {project.other.map((other, index) => {
                         return (
                           <>
@@ -265,30 +249,11 @@ const Skills = (props) => {
                         )
                       })}
                     </Grid>
+                  </Grid>
 
-                  </DialogContentText>
+                </CardContent>
 
-                  <DialogActions>
-                    <Grid container justify='center' >
-                      <Button color="primary" variant='contained'
-                        style={{ marginRight: '.5rem' }} >
-                        <a href={project.github} target='_blank' rel='noreferrer'>
-                          <img src={repo} alt='Github' className={classes.buttons} />
-                        </a>
-
-                      </Button>
-                      <Button color="primary" variant='contained'
-                      >
-                        <a href={project.app} target='_blank' rel='noreferrer'>
-                          <img src={external} alt='Application' className={classes.buttons} />
-                        </a>
-                      </Button>
-                    </Grid>
-                  </DialogActions>
-
-                </DialogContent>
-              </Dialog>
-
+              </Card>
             </Grid>
           )
         })}
