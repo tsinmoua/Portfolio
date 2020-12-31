@@ -4,7 +4,7 @@ import {
   makeStyles, Typography,
   Card, CardActionArea, CardMedia,
   Button, useTheme, useMediaQuery,
-  Dialog, DialogContent, DialogContentText, DialogActions, DialogTitle
+  Dialog, DialogContent, DialogContentText, DialogActions,
 } from "@material-ui/core";
 
 import MachliFitness from '../assets/MachliFitness.png'
