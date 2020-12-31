@@ -74,12 +74,9 @@ const useStyles = makeStyles((theme) => ({
     },
     color: theme.palette.common.orange,
   },
-  appbar: {
-    zIndex: theme.zIndex.modal + 1
-  },
   tab: {
     minWidth: '8rem'
-  }
+  },
 
 }));
 
@@ -122,6 +119,7 @@ function Navbar(props) {
   const drawer = (
     <React.Fragment>
       <SwipeableDrawer
+        className={classes.swipe}
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
         open={openDrawer}

@@ -6,6 +6,7 @@ import {
   Button, useTheme, useMediaQuery,
   Dialog, DialogContent, DialogContentText, DialogActions,
 } from "@material-ui/core";
+import ClearIcon from '@material-ui/icons/Clear';
 
 import MachliFitness from '../assets/MachliFitness.png'
 import BudgetTracker from '../assets/BudgetTracker.png'
@@ -168,7 +169,43 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: 'transparent',
     },
-  }
+  },
+  projectContainer: {
+    width: '45%',
+    padding: '.5rem',
+    margin: '.5rem',
+    [theme.breakpoints.down("760")]: {
+      width: '90%',
+      margin: 0
+    },
+  },
+  dialog: {
+    padding: 0,
+  },
+  imageText: {
+    textAlign: 'center',
+    padding: '3rem',
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'rgba(0, 64, 128, 0.8)',
+    color: '#FFC04A',
+    opacity: 0,
+    transition: 'opacity .5s, visibility .5s',
+    '&:hover': {
+      // visibility: 'visible',
+      opacity: 1,
+    }
+  },
+  // cardAction: {
+  //   '&:hover': {
+  //     visibility: 'visible',
+  //     opacity: 1,
+  //   }
+  // }
 
 }))
 
@@ -176,9 +213,9 @@ const Skills = (props) => {
   const classes = useStyles();
 
   const [value, setValue] = useState()
-  
+
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   const handleClickOpen = (e) => {
     setValue(parseInt(e.currentTarget.value))
@@ -187,8 +224,6 @@ const Skills = (props) => {
   const handleClose = () => {
     setValue()
   };
-
-  console.log(value)
 
   return (
     <React.Fragment>
@@ -203,83 +238,87 @@ const Skills = (props) => {
 
         {projects.map((project, index) => {
           return (
-            <Grid container key={index} style={{ width: '45%', padding: '.5rem', margin: '.5rem' }}>
+            <Grid container key={index} className={classes.projectContainer}>
               <Card className={classes.card} >
-                <CardActionArea onClick={handleClickOpen} value={index} className='card'>
+                <CardActionArea onClick={handleClickOpen} value={index} className={classes.cardAction}>
                   <CardMedia
                     component="img"
                     alt={project.name}
                     height="100%"
                     image={project.image}
                   />
+                  <Typography variant='h1' className={classes.imageText}>
+                    Click me to learn more
+                  </Typography>
                 </CardActionArea>
               </Card>
 
               <Dialog
-                {...project}
+                fullScreen={fullScreen}
                 maxWidth='md'
                 open={value === index}
                 onClose={handleClose}
-                aria-labelledby={project.id}
               >
-                <DialogContent id={project.id}>
+                <DialogContent className={classes.dialog}>
+
+                  <Grid container justify='flex-end'>
+                    <Button style={{ padding: 0, display: 'block' }}>
+                      <ClearIcon onClick={handleClose} />
+                    </Button>
+                  </Grid>
 
                   <img src={project.image} alt={project.name} style={{ width: '100%' }} />
 
-                  <DialogContentText>
-                    <Typography variant="h5" style={{ textAlign: 'center' }}>
-                      {project.name}
-                    </Typography>
-                    <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
-                      {project.text}
-                    </Typography>
+                  <Typography variant="h5" style={{ textAlign: 'center' }}>
+                    {project.name}
+                  </Typography>
+                  <Typography variant="body2" style={{ textAlign: 'center', paddingBottom: '.5rem' }}>
+                    {project.text}
+                  </Typography>
 
-                    <Grid container>
-                      <Grid container justify='center'>
-                        <Typography variant='subtitle2' >
-                          Powered by:
-                        </Typography>
-                      </Grid>
-                      <Grid container justify='center'>
-                        {project.tools.map((tools, index) => {
-                          return (
-                            <Grid item key={index} className={classes.imageItem}>
-                              <img src={tools.image} alt={tools.caption} className={classes.images} />
-                            </Grid>
-                          )
-                        })}
-                      </Grid>
-                    </Grid>
-
-                    <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
+                  <Grid container>
+                    <Grid container justify='center'>
                       <Typography variant='subtitle2' >
-                        Other: &nbsp;
+                        Powered by:
                         </Typography>
-                      {project.other.map((other, index) => {
+                    </Grid>
+                    <Grid container justify='center'>
+                      {project.tools.map((tools, index) => {
                         return (
-                          <>
-                            <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
-                              {other}
-                            </Typography>
-                          </>
+                          <Grid item key={index} className={classes.imageItem}>
+                            <img src={tools.image} alt={tools.caption} className={classes.images} />
+                          </Grid>
                         )
                       })}
                     </Grid>
+                  </Grid>
 
-                  </DialogContentText>
+                  <Grid container justify='center' style={{ paddingTop: '.5rem' }}>
+                    <Typography variant='subtitle2' >
+                      Other: &nbsp;
+                        </Typography>
+                    {project.other.map((other, index) => {
+                      return (
+                        <>
+                          <Typography key={index} variant='subtitle2' style={{ marginRight: '.2rem' }}>
+                            {other}
+                          </Typography>
+                        </>
+                      )
+                    })}
+                  </Grid>
+
 
                   <DialogActions>
                     <Grid container justify='center' >
                       <Button color="primary" variant='contained'
-                        style={{ marginRight: '.5rem' }} >
-                        <a href={project.github} target='_blank' rel='noreferrer'>
+                        style={{ marginRight: '.5rem', height: '32px' }} >
+                        <a href={project.github} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
                           <img src={repo} alt='Github' className={classes.buttons} />
                         </a>
-
                       </Button>
-                      <Button color="primary" variant='contained'
-                      >
-                        <a href={project.app} target='_blank' rel='noreferrer'>
+                      <Button color="primary" variant='contained' style={{ height: '32px', padding: 0 }}>
+                        <a href={project.app} target='_blank' rel='noreferrer' style={{ height: '32px' }}>
                           <img src={external} alt='Application' className={classes.buttons} />
                         </a>
                       </Button>
